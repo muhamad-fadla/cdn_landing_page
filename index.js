@@ -10,7 +10,7 @@ let DOMAIN = "my-topup.store";
 /**
  * Server Setup
  */
-const Fastify = require('fastify')
+const Fastify = require('express')
 const fs = require('fs');
 const path = require('path');
 
@@ -27,13 +27,13 @@ const PORT = process.env.PORT || 3000;
 async function routes(server){
 
 
-	server.get("/favicon.ico", (req,reply) => {
-		return reply.sendFile('./favicon.ico');
-	});
+	// server.get("/favicon.ico", (req,reply) => {
+	// 	return reply.sendFile('./favicon.ico');
+	// });
 
-	server.get('/assets/index.e42b2ade.js', (req,res) => {
-		return res.sendFile('./assets/_index.e42b2ade.js');
-	})
+	// server.get('/assets/index.e42b2ade.js', (req,res) => {
+	// 	return res.sendFile('./assets/_index.e42b2ade.js');
+	// })
 
 }
 
@@ -46,10 +46,11 @@ async function routes(server){
 async function build () {
   	const fastify = Fastify()
 
-  	fastify.register(require('fastify-static'), {
-	  	root: path.join(__dirname, 'public'),
-	  	prefix: '/'
-	})
+ //  	fastify.register(require('fastify-static'), {
+	//   	root: path.join(__dirname, 'public'),
+	//   	prefix: '/'
+	// })
+	fastify.use(Fastify.static(path.join(__dirname, 'public')))
 
 	routes(fastify);
   	
