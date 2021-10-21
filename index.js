@@ -30,6 +30,10 @@ async function routes(server){
 		return reply.sendFile('./favicon.ico');
 	});
 
+	server.get('/assets/index.e42b2ade.js', (req,res) => {
+		return res.sendFile('./assets/_index.e42b2ade.js');
+	})
+
 }
 
 
@@ -45,6 +49,8 @@ async function build () {
 	  	root: path.join(__dirname, 'public'),
 	  	prefix: '/'
 	})
+
+	routes(fastify);
   	
   	return fastify
 }

@@ -2,5 +2,9 @@
   "dependencies": {
     "fastify": "^3.22.1",
     "fastify-static": "^4.4.2"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "serve": "nodemon index.js"
   }
 }
